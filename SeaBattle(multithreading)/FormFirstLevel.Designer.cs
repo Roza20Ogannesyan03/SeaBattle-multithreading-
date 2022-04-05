@@ -29,23 +29,28 @@ namespace SeaBattle_multithreading_
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFirstLevel));
             this.dataGridViewField = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewMove = new System.Windows.Forms.DataGridView();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
-            this.buttoncConfirmTheMove = new System.Windows.Forms.Button();
             this.buttonToRun = new System.Windows.Forms.Button();
             this.label1Level = new System.Windows.Forms.Label();
+            this.pictureBoxA = new System.Windows.Forms.PictureBox();
+            this.pictureBoxB = new System.Windows.Forms.PictureBox();
+            this.Column5 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.buttonStartOver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewField)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMove)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxB)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewField
@@ -106,7 +111,7 @@ namespace SeaBattle_multithreading_
             this.dataGridViewMove.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column5,
             this.Column6});
-            this.dataGridViewMove.Location = new System.Drawing.Point(581, 98);
+            this.dataGridViewMove.Location = new System.Drawing.Point(568, 145);
             this.dataGridViewMove.Name = "dataGridViewMove";
             this.dataGridViewMove.ReadOnly = true;
             this.dataGridViewMove.RowHeadersVisible = false;
@@ -114,86 +119,61 @@ namespace SeaBattle_multithreading_
             this.dataGridViewMove.Size = new System.Drawing.Size(105, 205);
             this.dataGridViewMove.TabIndex = 1;
             // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Column5";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 50;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Column6";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 50;
-            // 
             // buttonUp
             // 
-            this.buttonUp.BackColor = System.Drawing.Color.Fuchsia;
-            this.buttonUp.Location = new System.Drawing.Point(535, 320);
+            this.buttonUp.BackColor = System.Drawing.Color.White;
+            this.buttonUp.ForeColor = System.Drawing.Color.Black;
+            this.buttonUp.Image = ((System.Drawing.Image)(resources.GetObject("buttonUp.Image")));
+            this.buttonUp.Location = new System.Drawing.Point(538, 357);
             this.buttonUp.Name = "buttonUp";
             this.buttonUp.Size = new System.Drawing.Size(40, 33);
             this.buttonUp.TabIndex = 2;
-            this.buttonUp.Text = "^";
             this.buttonUp.UseVisualStyleBackColor = false;
             this.buttonUp.Click += new System.EventHandler(this.buttonMove_Click);
             // 
             // buttonDown
             // 
-            this.buttonDown.BackColor = System.Drawing.Color.Fuchsia;
-            this.buttonDown.Location = new System.Drawing.Point(581, 321);
+            this.buttonDown.BackColor = System.Drawing.Color.White;
+            this.buttonDown.Image = ((System.Drawing.Image)(resources.GetObject("buttonDown.Image")));
+            this.buttonDown.Location = new System.Drawing.Point(584, 357);
             this.buttonDown.Name = "buttonDown";
             this.buttonDown.Size = new System.Drawing.Size(41, 32);
             this.buttonDown.TabIndex = 3;
-            this.buttonDown.Text = "v";
             this.buttonDown.UseVisualStyleBackColor = false;
             this.buttonDown.UseWaitCursor = true;
             this.buttonDown.Click += new System.EventHandler(this.buttonMove_Click);
             // 
             // buttonRight
             // 
-            this.buttonRight.BackColor = System.Drawing.Color.Fuchsia;
-            this.buttonRight.Location = new System.Drawing.Point(631, 321);
+            this.buttonRight.BackColor = System.Drawing.Color.White;
+            this.buttonRight.Image = ((System.Drawing.Image)(resources.GetObject("buttonRight.Image")));
+            this.buttonRight.Location = new System.Drawing.Point(631, 356);
             this.buttonRight.Name = "buttonRight";
             this.buttonRight.Size = new System.Drawing.Size(42, 33);
             this.buttonRight.TabIndex = 4;
-            this.buttonRight.Text = ">";
             this.buttonRight.UseVisualStyleBackColor = false;
             this.buttonRight.UseWaitCursor = true;
             this.buttonRight.Click += new System.EventHandler(this.buttonMove_Click);
             // 
             // buttonLeft
             // 
-            this.buttonLeft.BackColor = System.Drawing.Color.Fuchsia;
-            this.buttonLeft.Location = new System.Drawing.Point(679, 322);
+            this.buttonLeft.BackColor = System.Drawing.Color.White;
+            this.buttonLeft.Image = ((System.Drawing.Image)(resources.GetObject("buttonLeft.Image")));
+            this.buttonLeft.Location = new System.Drawing.Point(679, 356);
             this.buttonLeft.Name = "buttonLeft";
             this.buttonLeft.Size = new System.Drawing.Size(43, 32);
             this.buttonLeft.TabIndex = 5;
-            this.buttonLeft.Text = "<";
             this.buttonLeft.UseVisualStyleBackColor = false;
             this.buttonLeft.UseWaitCursor = true;
             this.buttonLeft.Click += new System.EventHandler(this.buttonMove_Click);
-            // 
-            // buttoncConfirmTheMove
-            // 
-            this.buttoncConfirmTheMove.BackColor = System.Drawing.Color.Fuchsia;
-            this.buttoncConfirmTheMove.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttoncConfirmTheMove.Location = new System.Drawing.Point(568, 368);
-            this.buttoncConfirmTheMove.Name = "buttoncConfirmTheMove";
-            this.buttoncConfirmTheMove.Size = new System.Drawing.Size(141, 33);
-            this.buttoncConfirmTheMove.TabIndex = 6;
-            this.buttoncConfirmTheMove.Text = "Продолжить";
-            this.buttoncConfirmTheMove.UseVisualStyleBackColor = false;
-            this.buttoncConfirmTheMove.Click += new System.EventHandler(this.buttoncConfirmTheMove_Click);
             // 
             // buttonToRun
             // 
             this.buttonToRun.BackColor = System.Drawing.Color.Fuchsia;
             this.buttonToRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonToRun.Location = new System.Drawing.Point(92, 365);
+            this.buttonToRun.Location = new System.Drawing.Point(56, 321);
             this.buttonToRun.Name = "buttonToRun";
-            this.buttonToRun.Size = new System.Drawing.Size(152, 36);
+            this.buttonToRun.Size = new System.Drawing.Size(205, 36);
             this.buttonToRun.TabIndex = 7;
             this.buttonToRun.Text = "Запустить";
             this.buttonToRun.UseVisualStyleBackColor = false;
@@ -210,15 +190,62 @@ namespace SeaBattle_multithreading_
             this.label1Level.TabIndex = 8;
             this.label1Level.Text = "Уровень 1";
             // 
+            // pictureBoxA
+            // 
+            this.pictureBoxA.ErrorImage = null;
+            this.pictureBoxA.Location = new System.Drawing.Point(568, 98);
+            this.pictureBoxA.Name = "pictureBoxA";
+            this.pictureBoxA.Size = new System.Drawing.Size(55, 50);
+            this.pictureBoxA.TabIndex = 9;
+            this.pictureBoxA.TabStop = false;
+            // 
+            // pictureBoxB
+            // 
+            this.pictureBoxB.Location = new System.Drawing.Point(618, 98);
+            this.pictureBoxB.Name = "pictureBoxB";
+            this.pictureBoxB.Size = new System.Drawing.Size(55, 50);
+            this.pictureBoxB.TabIndex = 10;
+            this.pictureBoxB.TabStop = false;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Column5";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column5.Width = 50;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Column6";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column6.Width = 50;
+            // 
+            // buttonStartOver
+            // 
+            this.buttonStartOver.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonStartOver.Location = new System.Drawing.Point(56, 381);
+            this.buttonStartOver.Name = "buttonStartOver";
+            this.buttonStartOver.Size = new System.Drawing.Size(205, 32);
+            this.buttonStartOver.TabIndex = 11;
+            this.buttonStartOver.Text = "Начать заново";
+            this.buttonStartOver.UseVisualStyleBackColor = true;
+            // 
             // FormFirstLevel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonStartOver);
+            this.Controls.Add(this.pictureBoxB);
+            this.Controls.Add(this.pictureBoxA);
             this.Controls.Add(this.label1Level);
             this.Controls.Add(this.buttonToRun);
-            this.Controls.Add(this.buttoncConfirmTheMove);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonDown);
@@ -231,6 +258,8 @@ namespace SeaBattle_multithreading_
             this.Load += new System.EventHandler(this.FormFirstLevel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewField)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMove)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,15 +273,17 @@ namespace SeaBattle_multithreading_
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonLeft;
-        private System.Windows.Forms.Button buttoncConfirmTheMove;
         private System.Windows.Forms.Button buttonToRun;
         private System.Windows.Forms.Label label1Level;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.PictureBox pictureBoxA;
+        private System.Windows.Forms.PictureBox pictureBoxB;
+        private System.Windows.Forms.DataGridViewImageColumn Column5;
+        private System.Windows.Forms.DataGridViewImageColumn Column6;
+        private System.Windows.Forms.Button buttonStartOver;
     }
 }
 
