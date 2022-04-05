@@ -12,8 +12,6 @@ namespace SeaBattle_multithreading_
 {
     public partial class FormFirstLevel : Form
     {
-        Bitmap up = new Bitmap("up1.png");
-        Bitmap  down, right, left;
         public int height = 4;
         public int width = 4;
         public int[,] field;
@@ -22,7 +20,6 @@ namespace SeaBattle_multithreading_
         
         public FormFirstLevel()
         {
-
             InitializeComponent();
         }
         private void LoadLevel()
@@ -72,7 +69,6 @@ namespace SeaBattle_multithreading_
             dataGridViewMove.Rows[0].Cells[0].Selected = false;
             dataGridViewField.Enabled = false;
             GridField();
-
             
         }
         private void buttonMove_Click(object sender, EventArgs e)
@@ -84,75 +80,74 @@ namespace SeaBattle_multithreading_
 
        
       
-//        public bool TryStep(Image StepShip, int y, int x, int[,] tempField)
-//        {
-//            switch (StepShip)
-//            {
-//                case dataGridViewMove.CurrentCell.Value == buttonUp.Image:
-//                    if (y - 1 < 0) return true;
-//                    else  tempField[y - 1, x] = field[y, x];
-//                    break;
-//                case "v":
-//                    if (y + 1 > height - 1) return true;
-//                    else  tempField[y + 1, x] = field[y, x];
-//                    break;
-//                case ">":
-//                    if (x + 1 > width - 1)  return true;
-//                    else  tempField[y, x + 1] = field[y, x];
-//                    break;
-//                case "<":
-//                    if (x - 1 < 0)  return true;
-//                    else  tempField[y, x - 1] = field[y, x];
-//                    break;
-//            }
-//            return false;
-//        }
-//        public bool CheckWin()
-//        {
-//            for (int i = 0; i < height; i++)
-//            {
-//                for (int j = 0; j < width; j++)
-//                {
-//                    if (field[i, j] != end[i, j])
-//                    {
-//                        GridField();
-//                        return false;
-//                    }
-//                }
-//            }
-//            return true;
-//        }
+        public bool TryStep(Image StepShip, int y, int x, int[,] tempField)
+        {
+            Image up = Image.FromFile("up1.png");
+            Image down = Image.FromFile("down1.png");
+            Image right = Image.FromFile("right1.png");
+            Image left = Image.FromFile("left1.png");
+            if (StepShip == up && y - 1 < 0) return true;
+            else tempField[y - 1, x] = field[y, x];
 
-//        private void buttonToRun_Click(object sender, EventArgs e)
-//        {
-//            bool lose = false;
-//            for (int i = 1; i < stepIndex; i++)
-//            {
-//                lose = false;
-//                var stepYellow = (Image)dataGridViewMove.Rows[i].Cells[0].Value ;
-//                var stepBlack = (Image)dataGridViewMove.Rows[i].Cells[1].Value;
-//                var tempField = new int[height, width];
-//                for (int y = 0; y < height; y++)
-//                {
-//                    for (int x = 0; x < width; x++)
-//                    {
-//                        if (field[y, x] == 1)
-//                            lose = TryStep(stepYellow, y, x, tempField);
-//                        else if (field[y, x] == 2)
-//                            lose = TryStep(stepBlack, y, x, tempField);
+            if(StepShip == down && y + 1 > height - 1) return true;
+            else tempField[y + 1, x] = field[y, x];
 
-//                        if (lose)
-//                            goto finish;
+            if(StepShip == right && x + 1 > width - 1) return true;
+            else tempField[y, x + 1] = field[y, x];
 
-//                    }
-//                }
-//                field = tempField;
-//                GridField();
-//            }
+            if(StepShip == left && x - 1 < 0) return true;
+            else tempField[y, x - 1] = field[y, x];
 
-//            finish:
-//            if (!lose && CheckWin()) MessageBox.Show("Поздравляю, вы выиграли!");
-//            else MessageBox.Show("Вы проиграли");
-//        }
-   }
+            return false;
+
+        }
+        public bool CheckWin()
+        {
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (field[i, j] != end[i, j])
+                    {
+                        GridField();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private void buttonToRun_Click(object sender, EventArgs e)
+        {
+            bool lose = false;
+            for (int i = 1; i < stepIndex; i++)
+            {
+                lose = false;
+                var stepYellow = (Image)dataGridViewMove.Rows[i].Cells[0].Value ;
+                var stepBlack = (Image)dataGridViewMove.Rows[i].Cells[1].Value;
+                var tempField = new int[height, width];
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        if (field[y, x] == 1)
+                            lose = TryStep(stepYellow, y, x, tempField);
+                        else if (field[y, x] == 2)
+                            lose = TryStep(stepBlack, y, x, tempField);
+
+                        if (lose)
+                            goto finish;
+
+                    }
+                }
+                field = tempField;
+                GridField();
+            }
+
+            finish:
+            if (!lose && CheckWin()) MessageBox.Show("Поздравляю, вы выиграли!");
+            else MessageBox.Show("Вы проиграли");
+        }
+
+    }
 }
